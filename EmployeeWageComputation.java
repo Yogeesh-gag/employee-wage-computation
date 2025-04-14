@@ -4,15 +4,15 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class EmployeeWageComputation {
-    // Main method
-    public static void main(String[] args) {
-    	
+	
+	 	// Main method
+		public static void main(String[] args) {
+			
         // Displaying a welcome message
         System.out.println("Welcome to employee wage computation Problem!!");
         
         // creating a new Scanner Object
         Scanner sc = new Scanner(System.in);
-        
         System.out.println("Enter a employee Name : ");
         String name = sc.nextLine();
         
@@ -28,28 +28,29 @@ public class EmployeeWageComputation {
         // 0 - absent , 1-present for full time , 2- present for part-time
         int attendance = random.nextInt(3);
         
-        System.out.println(attendance);
-        
-        // check if the employee is absent
-        if (attendance == 1) {
-            System.out.println("Employee " + name + " is Present for full-time");
-            // calculating daily wage for full time
-            dailyWage = wagePerHour * fullDayHours;
-        } else if (attendance == 2) {
-            System.out.println("Employee " + name + " is Presnt for part-time");
-            // calculating the wage for part time
-            dailyWage = wagePerHour * partTimeHours;
-        } else {
-            System.out.println("Employee " + name + " is Absent!!");
-            dailyWage = 0;
+        // solving in switch case instead of if-else to find the attendance status
+        switch (attendance) {
+            case 1:
+                System.out.println("Employee " + name + " is Present for full-time");
+                // calculating daily wage for full time
+                dailyWage = wagePerHour * fullDayHours;
+                break;
+            case 2:
+                System.out.println("Employee " + name + " is Presnt for part-time");
+                // calculating the wage for part time
+                dailyWage = wagePerHour * partTimeHours;
+            case 0:
+                System.out.println("Employee " + name + " is Absent!!");
+                dailyWage = 0;
+                break;
+            default:
+                System.out.println("Invalid Attendance!");
         }
-
+        
         // Output of the daily wage
         System.out.println("Daily Employee Wage is : " + dailyWage);
         
-        //closing the scanner class object
+        //Closing the scanner class object
         sc.close();
-
     }
-
 }
